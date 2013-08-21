@@ -1,0 +1,55 @@
+<?php
+namespace Resident\Model;
+
+use Zend\Db\TableGateway\TableGateway;
+
+class ResidentTable
+{
+    protected $tableGateway;
+
+    public function __construct(TableGateway $tableGateway)
+    {
+        $this->tableGateway = $tableGateway;
+    }
+
+    public function fetchAll()
+    {
+        $resultSet = $this->tableGateway->select();
+        return $resultSet;
+    }
+
+    public function getResident($id)
+    {
+        $id  = (int) $id;
+        $rowset = $this->tableGateway->select(array('id' => $id));
+        $row = $rowset->current();
+        if (!$row) {
+            throw new \Exception("Could not find row $id");
+        }
+        return $row;
+    }
+
+    public function saveResident(Resident $resident)
+    {
+        $data = array(
+            'artist' => $resident->artist,
+            'title'  => $resident->title,
+        );
+
+        $id = (int)$resident->id;
+        if ($id == 0) {
+            $this->tableGateway->insert($data);
+        } else {
+            if ($this->getResident($id)) {
+                $this->tableGateway->update($data, array('id' => $id));
+            } else {
+                throw new \Exception('Form id does not exist');
+            }
+        }
+    }
+
+    public function deleteResident($id)
+    {
+        $this->tableGateway->delete(array('id' => $id));
+    }
+}

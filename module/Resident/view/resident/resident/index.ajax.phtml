@@ -1,0 +1,30 @@
+<?php
+// module/Resident/view/resident/resident/index.phtml:
+
+$title = 'My residents';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('resident', array('action'=>'add'));?>">Add new resident</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($residents as $resident) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($resident->title);?></td>
+    <td><?php echo $this->escapeHtml($resident->artist);?></td>
+    <td>
+        <a href="<?php echo $this->url('resident',
+            array('action'=>'edit', 'id' => $resident->id));?>">Edit</a>
+        <a href="<?php echo $this->url('resident',
+            array('action'=>'delete', 'id' => $resident->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>

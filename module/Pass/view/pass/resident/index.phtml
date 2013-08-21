@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- 
+$(function() {
+
+$("#saveButton").click(function () { 
+
+var name = $('#name').val(),
+    email = $('#email').val(),      
+    phone = $('#phone').val(),
+    fb = $('#fb').val(),
+    tw = $('#tw').val(),
+    postcode = $('#postcode').val();
+
+$.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: 'http://booglam.local/client/add',
+    async: false,
+    data: { name: name, email: email, phone: phone, fb: fb, tw: tw, postcode: postcode },
+    success: function(json) {
+        console.log(json.id + ' ' + json.details);
+    }
+});
+
+ return false;
+  });
+});
+-->
+
+	<div class="wrapper">
+
+		<!-- form class="form1" action="index.html">
+
+			<div class="formtitle">Login to your account</div>
+
+			<div class="input">
+				<div class="inputtext">Username: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+
+			<div class="input nobottomborder">
+				<div class="inputtext">Password: </div>
+				<div class="inputcontent">
+
+					<input type="password" />
+					<br/><a href="#">Forgot password?</a>
+
+				</div>
+			</div>
+
+			<div class="buttons">
+
+				<input class="orangebutton" type="submit" value="Login" />
+
+				<input class="greybutton" type="submit" value="Cancel" />
+
+			</div>
+
+		</form-->
+		
+		
+		<?php
+$form = $this->form;
+//$form->setAttribute('action', $this->url('album', array('action' => 'add')));
+$form->prepare();
+?>
+
+
+
+echo $this->formRow($form->get('artist'));
+
+
+		<?php echo $this->form()->openTag($form); 
+		echo $this->formHidden($form->get('id'));?>
+
+		<div class="formtitle">Resident Profile</div>
+        <div style="overflow-y:scroll; overflow-x:hidden; height:400px;">
+        <table>
+        <tr>
+        <td>
+        
+			<div class="input">
+				<div class="inputtext">First Name: </div>
+				<div class="inputcontent">
+
+					<?php echo $this->formRow($form->get('first_name'));?>
+				</div>
+			</div>
+			
+			<div class="input">
+				<div class="inputtext">Middle Name: </div>
+				<div class="inputcontent">
+
+					<?php echo $this->formRow($form->get('middle_name'));?>
+
+				</div>
+			</div>
+
+			<div class="input">
+				<div class="inputtext">Last Name: </div>
+				<div class="inputcontent">
+
+					<?php echo $this->formRow($form->get('last_name'));?>
+				
+				</div>
+			</div>
+
+			<div class="input">
+				<div class="inputtext">Register number: </div>
+				<div class="inputcontent">
+
+					<?php echo $this->formRow($form->get('register_number'));?>
+				
+				</div>
+			</div>
+			<div class="input">
+				<div class="inputtext">ssno: </div>
+				<div class="inputcontent">
+
+					<?php echo $this->formRow($form->get('ssno'));?>
+				
+				</div>
+			</div>
+			
+			<div class="input">
+				<div class="inputtext">DOB: </div>
+				<div class="inputcontent">
+
+					<?php echo $this->formRow($form->get('dob'));?>
+				
+				</div>
+			</div>
+
+			<div class="inputtextbox nobottomborder">
+				<div class="inputtext">Notes: </div>
+				<div class="inputcontent">
+
+					<textarea class="textarea"></textarea>
+
+				</div>
+			</div>
+
+			
+		</td>
+		<td>
+		      <div class="input">
+				<div class="inputtext">First Name: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+			
+			<div class="input">
+				<div class="inputtext">Middle Name: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+
+			<div class="input">
+				<div class="inputtext">Last Name: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+
+			<div class="input">
+				<div class="inputtext">Register number: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+			<div class="input">
+				<div class="inputtext">ssno: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+			
+			<div class="input">
+				<div class="inputtext">ssno: </div>
+				<div class="inputcontent">
+
+					<input type="text" />
+
+				</div>
+			</div>
+
+			<div class="inputtextbox nobottomborder">
+				<div class="inputtext">Notes: </div>
+				<div class="inputcontent">
+
+					<textarea class="textarea"></textarea>
+
+				</div>
+			</div>
+
+			
+		</td>
+	</tr>
+	<tr><td>
+	       
+	</td></tr>
+</table>
+</div>  <!-- scroll div -->  
+<div class="buttons">
+
+
+
+				<input class="orangebutton" type="submit" value="Send" />
+
+</div>
+<?php echo $this->form()->closeTag();?>
+
+		<div class="link">Designed by <a href="http://hostclipse.com">Have Vision </a> Technologies.</div>
+
+	</div>	
